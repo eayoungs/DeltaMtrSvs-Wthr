@@ -2,8 +2,7 @@
 mnthAveTemps <- function(fname){
   library("lubridate")
   
-  wthrData = read.csv(fname, header = TRUE,
-                            stringsAsFactors = FALSE)
+  wthrData = read.csv(fname, header = TRUE, stringsAsFactors = FALSE)
   
   mnthAvail = unique(month(wthrData$CST))
   mnthMean = data.frame()
