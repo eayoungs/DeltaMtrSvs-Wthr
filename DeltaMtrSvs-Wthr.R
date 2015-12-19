@@ -1,8 +1,8 @@
 
-mnthAveTemps <- function(){
+mnthAveTemps <- function(fname){
   library("lubridate")
   
-  wundergrnd.FDL = read.csv("FDL_WI-KFLD_262014-2122015.csv", header = TRUE,
+  wundergrnd.FDL = read.csv(fname, header = TRUE,
                             stringsAsFactors = FALSE)
   
   mnthAvail = unique(month(wundergrnd.FDL$CST))
@@ -12,6 +12,5 @@ mnthAveTemps <- function(){
                mnthAvail[i], "Mean.TemperatureF"]), row.names = 
                month.abb[mnthAvail[i]]), mnthMean)
   }
-  
-  write.csv(mnthMeans, file = "FDL_WI-KFLD_262014-2122015-MNTMEANS.csv")
+  write.csv(mnthMeans, file = paste("MNTHMEANS-", fname))
 }
