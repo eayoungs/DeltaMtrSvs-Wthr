@@ -2,14 +2,14 @@
 mnthAveTemps <- function(fname){
   library("lubridate")
   
-  wundergrnd.FDL = read.csv(fname, header = TRUE,
+  wthrData = read.csv(fname, header = TRUE,
                             stringsAsFactors = FALSE)
   
-  mnthAvail = unique(month(wundergrnd.FDL$CST))
+  mnthAvail = unique(month(wthrData$CST))
   mnthMean = data.frame()
   
   for(i in 1:length(mnthAvail)) {
-    mnthMean = rbind(data.frame(mean(wundergrnd.FDL[month(wundergrnd.FDL$CST)
+    mnthMean = rbind(data.frame(mean(wthrData[month(wthrData$CST)
                      == mnthAvail[i], "Mean.TemperatureF"]), row.names = 
                      month.abb[mnthAvail[i]]), mnthMean)
   }
