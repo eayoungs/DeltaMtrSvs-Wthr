@@ -1,7 +1,23 @@
+# __author__ = "Eric Allen Youngson"
+# __email__ = "eric@scneco.com"
+# __copyright__ = "Copyright Dec. 2015, Succession Ecological Services"
+# __license__ = "GNU Affero (GPLv3)"
+# 
+# This file contains functions for working with the results of API queries from
+# DeltaMeterServices.com
 
-mnthAveTemps <- function(fname){
-  library("lubridate")
-  
+# install.packages("lubridate") ## Uncomment on first execution (source)
+# library("lubridate")          ## Uncomment on first execution (source)
+
+
+MonthAveTemps <- function(fname){
+  # 
+  #
+  # Args:
+  #   : 
+  # 
+  # Returns:
+  #   
   wthrData = read.csv(fname, header = TRUE, stringsAsFactors = FALSE)
   
   dateCol = colnames(wthrData[1])
