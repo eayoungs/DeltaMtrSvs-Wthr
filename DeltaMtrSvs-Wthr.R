@@ -20,14 +20,15 @@ MonthAveTemps <- function(fname){
   #   
   wthrData = read.csv(fname, header = TRUE, stringsAsFactors = FALSE)
   
-  dateCol = colnames(wthrData[1])
+  dateCol = colnames(wthrData[3])
   mnthAvail = unique(month(wthrData[, dateCol]))
   mnthMean = data.frame()
   
   for(i in 1:length(mnthAvail)) {
-    mnthMean = rbind(data.frame(mean(wthrData[month(wthrData[, dateCol])
-                     == mnthAvail[i], "Mean.TemperatureF"]), row.names = 
+    mnthMean = rbind(data.frame(Month = mnthAvail[i], Mean.Temp = mean(wthrData[month(wthrData[, dateCol])
+                     == mnthAvail[i], "AirTemp"]), row.names = 
                      month.abb[mnthAvail[i]]), mnthMean)
+    mnthMean = mnthMean[order(mnthMean$Month),]
   }
   write.csv(mnthMean, file = paste("MNTHMEANS-", fname))
 }
